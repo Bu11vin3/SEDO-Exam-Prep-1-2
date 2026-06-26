@@ -10,7 +10,7 @@ pipeline{
                 }
             }
             steps{
-                bat "dotnet restore"
+                sh 'dotnet restore'
             }
         }
         stage('Dotnet Build'){
@@ -21,7 +21,7 @@ pipeline{
                 }
             }
             steps{
-                bat "dotnet build"
+                sh 'dotnet build --no-restore --configuration Release'
             }
         }
         stage('Dotnet Test'){
@@ -32,7 +32,7 @@ pipeline{
                 }
             }
             steps{
-                bat "dotnet test"
+                sh 'dotnet test --no-build --verbosity normal --logger trx'
             }
         }
     }
