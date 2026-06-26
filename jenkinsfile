@@ -1,5 +1,5 @@
 pipeline{
-    agents any 
+    agent any 
     stages{
 
         stage('Dotnet Restore'){
@@ -10,7 +10,7 @@ pipeline{
                 }
             }
             steps{
-                sh 'dotnet restore'
+                sh "dotnet restore"
             }
         }
         stage('Dotnet Build'){
@@ -21,7 +21,7 @@ pipeline{
                 }
             }
             steps{
-                sh 'dotnet build --no-restore'
+                sh "dotnet build --no-restore"
             }
         }
         stage('Dotnet Test'){
@@ -32,7 +32,7 @@ pipeline{
                 }
             }
             steps{
-                sh 'dotnet test --no-build --verbosity normal'
+                sh "dotnet test --no-build --verbosity normal"
             }
         }
     }
