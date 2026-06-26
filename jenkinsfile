@@ -21,7 +21,7 @@ pipeline{
                 }
             }
             steps{
-                sh 'dotnet build --no-restore --configuration Release'
+                sh 'dotnet build --no-restore'
             }
         }
         stage('Dotnet Test'){
@@ -32,7 +32,7 @@ pipeline{
                 }
             }
             steps{
-                sh 'dotnet test --no-build --verbosity normal --logger trx'
+                sh 'dotnet test --no-build --verbosity normal'
             }
         }
     }
