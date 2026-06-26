@@ -4,7 +4,7 @@ pipeline{
 
         stage('Dotnet Restore'){
             when {
-                anyof {
+                anyOf {
                     branch 'main'
                     branch 'feature'
                 }
@@ -14,18 +14,22 @@ pipeline{
             }
         }
         stage('Dotnet Build'){
-            anyof{
-                branch 'main'
-                branch 'feature'
+            when {
+                anyOf {
+                    branch 'main'
+                    branch 'feature'
+                }
             }
             steps{
                 bat "dotnet build"
             }
         }
         stage('Dotnet Test'){
-            anyof{
-                branch 'main'
-                branch 'feature'
+            when {
+                anyOf {
+                    branch 'main'
+                    branch 'feature'
+                }
             }
             steps{
                 bat "dotnet test"
