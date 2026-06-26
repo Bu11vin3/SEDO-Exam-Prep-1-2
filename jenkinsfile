@@ -1,0 +1,35 @@
+pipeline{
+    agents any 
+    stages{
+
+        stage('Dotnet Restore'){
+            when {
+                anyof {
+                    branch 'main'
+                    branch 'feature'
+                }
+            }
+            steps{
+                bat "dotnet restore"
+            }
+        }
+        stage('Dotnet Build'){
+            anyof{
+                branch 'main'
+                branch 'feature'
+            }
+            steps{
+                bat "dotnet build"
+            }
+        }
+        stage('Dotnet Test'){
+            anyof{
+                branch 'main'
+                branch 'feature'
+            }
+            steps{
+                bat "dotnet test"
+            }
+        }
+    }
+}
